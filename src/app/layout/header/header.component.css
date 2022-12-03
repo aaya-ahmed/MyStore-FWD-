@@ -1,0 +1,14 @@
+header nav div img{
+    width:100px;
+    height:50px;
+    margin: 0.5rem 1rem;
+}
+header nav{
+    justify-content: space-between;
+}
+.navbar-nav{
+    flex-direction: row;
+}
+nav ul li{
+    padding: 0.5rem;
+}

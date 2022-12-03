@@ -1,0 +1,20 @@
+.card{
+    width: 18rem;
+    margin: 1rem;
+}
+.card img{
+    height: 25rem;
+}
+.form-select{
+    width: 50%;
+    margin-bottom: 0.5rem;
+}
+.form-select:focus{
+    box-shadow: none;
+}
+.button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}

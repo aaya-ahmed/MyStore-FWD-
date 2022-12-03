@@ -1,0 +1,41 @@
+.container{
+    width: 80%;
+    display: flex;
+}
+.items{
+    width: 50%;
+    background-color: rgba(128, 128, 128, 0.285);
+}
+.item{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem auto
+}
+.image{
+    width: 50%;
+}
+.image img {
+    width: 150px;
+    height: 200px;
+    border-radius: 15px;
+    display: block;
+    margin: 0 auto;
+}
+.details{
+    width: 40%;
+}
+.details p{
+    font-weight: 900;
+}
+.form{
+    width: 50%;
+}
+form{
+    width: 60%;
+    margin: 1rem auto;
+}
+.price{
+    font-weight: 900;
+    text-align: center;
+}

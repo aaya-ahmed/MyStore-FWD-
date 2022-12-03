@@ -1,0 +1,29 @@
+.item{
+    width: 70%;
+    margin: 1rem auto;
+    display: flex;
+
+}
+.image {
+    width: 50%;
+}
+.image img{
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+}
+.container{
+    width: 30%;
+    position: relative;
+}
+.sub-container{
+    width: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.form-select{
+    width:100px;
+    margin-bottom: 1rem;
+}

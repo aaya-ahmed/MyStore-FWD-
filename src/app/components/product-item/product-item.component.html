@@ -1,0 +1,13 @@
+<div class="card">
+    <img class="card-img-top" src="{{product?.url}}" alt="Card image cap" (click)="gotodetails()">
+    <div class="card-body">
+      <h5 class="card-title">{{product?.name}}</h5>
+      <p class="card-text">{{product?.price|currency}}</p>
+      <div class="button">
+        <select class="form-select" (change)="changeNumOfItem($event)">
+            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" value="{{i}}">{{i}}</option>
+          </select>
+        <button class="btn btn-primary" (click)="addtocart()">Add To Cart</button>
+      </div>
+    </div>
+  </div>

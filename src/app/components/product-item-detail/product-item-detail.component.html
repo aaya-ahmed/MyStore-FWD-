@@ -1,0 +1,21 @@
+<div class="item">
+    <div class="image">
+        <img src="{{product?.url}}"/>
+    </div>
+    <div class="container">
+        <div class="sub-container">
+            <h3>{{product?.name}}</h3>
+            <p>{{product?.price|currency}}</p>
+            <p>{{product?.description}}</p>
+            <select class="form-select" (change)="setnumberofitem($event)">
+                <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" value="{{i}}">{{i}}</option>
+            </select>
+            <div>
+                <button class="btn btn-primary" (click)="addtocart()">Add To Cart</button>
+            </div>
+            <div>
+                <a [routerLink]="'/productlist'">Back to product list</a>
+            </div>
+        </div>
+    </div>
+</div>

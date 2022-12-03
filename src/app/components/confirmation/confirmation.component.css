@@ -1,0 +1,13 @@
+div{
+    width: 80%;
+    text-align: center;
+    margin: 3rem auto;
+}
+h2{
+    font-weight: 700;
+    font-size: 40px;
+    color: #4bd4b4;
+}
+span{
+    font-weight: 700;
+}
