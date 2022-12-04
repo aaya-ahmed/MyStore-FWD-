@@ -14,13 +14,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Dependencies
 To install the dependencies for this project, run the following command:
+```
 npm install
-``
+```
 
 ## start server
 On the same terminal, run the command
+```
 ng serve
-
+```
 #### Sample request:
 Navigate to 
 http://localhost:4200/
