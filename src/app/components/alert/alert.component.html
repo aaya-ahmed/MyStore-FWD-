@@ -1,0 +1,16 @@
+<div class="fluid-container">
+    <div class="mess" *ngIf="type=='removing'">
+        <p>You sure,you want to remove<span>{{data.name}}</span>from cart</p>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-danger mx-2" (click)="replay(true)">Yes</button>
+            <button class="btn btn-primary mx-2"  (click)="replay(false)">No</button>
+        </div>
+    </div>
+    <div  class="mess" *ngIf="type=='changenum'">
+        <p>You sure,you want<span>{{data.numberOfItem}}</span>from<span>{{data.name}}</span></p>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-danger mx-2" (click)="replay(true)">Yes</button>
+            <button class="btn btn-primary mx-2"  (click)="replay(false)">No</button>
+        </div>
+    </div>
+</div>

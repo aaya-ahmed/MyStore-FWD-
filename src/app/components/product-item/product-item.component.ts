@@ -26,7 +26,7 @@ export class ProductItemComponent implements OnInit {
       name: '',
       price: 0,
       url: '',
-      numberOfItem: 0
+      numberOfItem: 1
     }
   }
   ngOnInit(): void {}

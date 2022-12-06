@@ -25,12 +25,12 @@ export class CartService {
   public getcart(){
     return this.storage
   }
-  public setcart(cartitem:itemcart):string{
+  public setcart(cartitem:itemcart,totalPrice?:number):string{
+    console.log(this.user)
     let incart=this.storage.findIndex(ele=>ele.id===cartitem.id)
     if(incart!=-1){
-      if(this.storage[incart].numberOfItem!=cartitem.numberOfItem){
-        this.storage.splice(incart,1)
-        this.storage.push(cartitem)
+      if(this.user.price!=totalPrice){
+        this.storage.splice(incart,1,cartitem)
         localStorage.setItem('cart',JSON.stringify(this.storage))
         return 'Updated number of item in cart'
       }
@@ -47,5 +47,9 @@ export class CartService {
   public buydone(){
     localStorage.removeItem('cart')
     this.storage=[]
+  }
+  public removeitem(index:number){
+    this.storage.splice(index,1)
+    localStorage.setItem('cart',JSON.stringify(this.storage))
   }
 }

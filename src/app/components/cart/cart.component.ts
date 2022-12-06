@@ -11,13 +11,11 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartComponent implements OnInit {
   cart:itemcart[]=[]
-  user:{fullname:string,address:string,creditcard:string,price:number}={
-    fullname: '',
-    address: '',
-    creditcard: '',
-    price:0
-  }
+  flag:boolean=false
+  changetype:string='removing'
+  cartitem:{name:string,numberOfItem:number,index:number}={name:'',numberOfItem:0,index:0}
   totalPrice:number=0
+  prevnumber:number=0
   constructor(private service:CartService,private route:Router) { }
 
   ngOnInit(): void {
@@ -25,21 +23,35 @@ export class CartComponent implements OnInit {
     this.cart.forEach(ele=>{
       this.totalPrice=this.totalPrice+(ele.price*ele.numberOfItem)
     })
-    if(this.service.getuser()){
-      this.user=this.service.getuser()
-    }
+  }
+  prevnum(event:any){
+    this.prevnumber=event.target.value
   }
   changetotalprice(index:number,event:any){
-    let newnumber=event.target.value
-   this.totalPrice=this.totalPrice-(this.cart[index].price*this.cart[index].numberOfItem)+(this.cart[index].price*newnumber)
-   this.cart[index].numberOfItem=newnumber
-   this.service.setcart(this.cart[index])
+    this.changetype='changenum'
+    this.flag=true
+    this.cartitem={name:this.cart[index].name,numberOfItem:event,index:index}
   }
-  buy(form:NgForm){
-    if(form.valid){
-      this.user.price=this.totalPrice
-      this.service.setuser(this.user)
-      this.route.navigate(['/confirmation'])
+  alert(index:number){
+    this.changetype='removing'
+    this.flag=true
+    this.cartitem={name:this.cart[index].name,numberOfItem:this.cart[index].numberOfItem,index:index}
+    console.log(this.cart[index])
+  }
+  changeitem(answer:boolean){
+    this.flag=false
+    let index=this.cartitem.index
+    if(this.changetype=='changenum'&&answer==true){
+      this.totalPrice=this.totalPrice-(this.cart[index].price*this.prevnumber)+(this.cart[index].price*this.cartitem.numberOfItem)
+      this.service.setcart(this.cart[index],this.totalPrice)
+    }
+    else if(this.changetype=='changenum'&&answer==false){
+      this.cart[index].numberOfItem=this.prevnumber
+    }
+    if(this.changetype=='removing'&&answer==true){
+      this.prevnumber=this.cart[index].numberOfItem
+      this.totalPrice=this.totalPrice-(this.cart[index].price*this.prevnumber)
+      this.service.removeitem(index)
     }
   }
 

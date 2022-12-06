@@ -13,7 +13,7 @@ import { ServiceService } from 'src/app/services/service.service';
 })
 export class ProductItemDetailComponent implements OnInit {
   product:product
-  numberOfItem:number=0
+  numberOfItem:number=1
   constructor(private router:ActivatedRoute,private service:ServiceService,private cartservice:CartService) {
     this.product={
       id: 0,

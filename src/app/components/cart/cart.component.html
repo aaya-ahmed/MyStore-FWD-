@@ -1,3 +1,6 @@
+<div *ngIf="cart.length==0">
+    <p class="alert alert-danger w-50 m-auto my-3 text-center">No Items</p>
+</div> 
 <div class="container" *ngIf="cart.length>0">
     <div class="items">
         <div class="item" *ngFor="let item of cart;let i=index">
@@ -7,65 +10,18 @@
             <div class="details">
                 <p>{{item?.name}}</p>
                 <p>{{item?.price|currency}}</p>
-                <input type="number" min="1" class="form-control" value="{{item.numberOfItem}}" (change)="changetotalprice(i,$event)"/>
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" min="1" class="form-control" (focus)="prevnum($event)" [(ngModel)]="item.numberOfItem" (ngModelChange)="changetotalprice(i,$event)"/>
             </div>
+            <button class="close" (click)="alert(i)"><span class="fa-solid fa-xmark"></span></button>
         </div>
         <div class="price">
             <p>Toltal Price <span>{{totalPrice|currency}}</span></p>
         </div>
     </div>
     <div class="form">
-        <form #form="ngForm">
-            <div>
-                <label for="name">Full Name</label>
-                <input id="name" type="text" class="form-control" name="name" placeholder="(minimum 3 characters)"
-                #name="ngModel" 
-                ngModel 
-                required 
-                minlength="3" 
-                [(ngModel)]="user.fullname"
-                [ngClass]="{'is-invalid':((name.errors?.required||name.errors?.minlength)&&name.dirty)||form.submitted&&name.invalid}"/>
-               <small style="color:red;" *ngIf="name.invalid&&name.dirty">
-                <p *ngIf="name.errors?.required">full name is required</p>
-                <p *ngIf="name.errors?.minlength"> min length is 3</p>
-               </small>          
-            </div>
-            <div>
-                <label for="address">Address</label>
-                <input id="address" type="text" class="form-control" name="address" placeholder="(minimum 6 characters)"
-                #address="ngModel" 
-                ngModel 
-                required 
-                minlength="6" 
-                [(ngModel)]="user.address"
-                [ngClass]="{'is-invalid':((address.errors?.required||address.errors?.minlength)&&address.dirty)||form.submitted&&address.invalid}"/>
-                <small style="color:red;" *ngIf="address.invalid&&address.dirty">
-                 <p *ngIf="address.errors?.required">Address is required</p>
-                 <p *ngIf="address.errors?.minlength"> min length is 6</p>
-                </small>  
-            </div>
-            <div>
-                <label for="credit">Credit Card Number</label>
-                <input id="credit" type="text" class="form-control" name="credit" placeholder="(16-digit number)"
-                #credit="ngModel" 
-                required 
-                minlength="16" 
-                maxlength="16" 
-                ngModel 
-                [(ngModel)]="user.creditcard"
-                [ngClass]="{'is-invalid':((credit.errors?.required||credit.errors?.minlength)&&credit.dirty)||form.submitted&&credit.invalid}"/>
-                <small style="color:red;" *ngIf="credit.invalid&&credit.dirty">
-                 <p *ngIf="credit.errors?.required">credit is required</p>
-                 <p *ngIf="credit.errors?.minlength">credit number must be 16 number</p>
-                </small>  
-                <small>we'll never share your payment details with anyone else.</small>
-            </div>
-            <div>
-                <button class="btn btn-primary" (click)="buy(form)">Submit</button>
-            </div>
-        </form>
+        <app-cartform [totalPrice]="totalPrice"></app-cartform>
     </div>
 </div>
-<div *ngIf="cart.length==0">
-    <p class="alert alert-danger w-50 m-auto my-3 text-center">No Items</p>
-</div> 
+<app-alert *ngIf="flag" [type]="changetype" [data]="cartitem" (answer)="changeitem($event)"></app-alert>
+
