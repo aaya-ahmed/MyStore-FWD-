@@ -4,13 +4,16 @@
 }
 .items{
     width: 50%;
-    background-color: rgba(128, 128, 128, 0.285);
 }
 .item{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 1rem auto
+    margin: 1rem auto;
+    padding: 0.5rem 0;
+    position: relative;
+    background-color: rgba(128, 128, 128, 0.285);
+
 }
 .image{
     width: 50%;
@@ -25,17 +28,23 @@
 .details{
     width: 40%;
 }
-.details p{
+.details p,label{
     font-weight: 900;
 }
 .form{
     width: 50%;
 }
-form{
-    width: 60%;
-    margin: 1rem auto;
-}
+
 .price{
     font-weight: 900;
     text-align: center;
+}
+.close{
+    position: absolute;
+    top:0;
+    left: 0;
+    color: red;
+    background-color: transparent;
+    outline: none;
+    border: none;
 }
